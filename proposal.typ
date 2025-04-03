@@ -43,7 +43,7 @@ This project has three main parts:
 
 - `epoll` polling system in `cats-effect`
 - `kqueue` polling system in `cats-effect`
-- Using `epoll`/`kqueue` polling sytems in `fs2` for networking.
+- Using `epoll`/`kqueue` polling systems in `fs2` for networking.
 
 I believe having one vertical slice of the implementation will help getting faster feedback and improve the overall development process. Therefore I will first implement `epoll` polling system and use it in some parts of `fs2`. Then once it works properly, I will work on implementing `kqueue` polling system. Then I will work on remaining places to migrate in `fs2`.
 
@@ -63,7 +63,7 @@ Mentors informed me that, migrating all appropriate modules in `fs2` into `Polli
 
 *June 2 - June 10* (Official coding period starts)
 
-- Create a Github project under the Typlevel organization. Each milestone will be opened as an issue and will be linked to this project.
+- Create a Github project under the Typelevel organization. Each milestone will be opened as an issue and will be linked to this project.
 - Setup infrastructure to call native code from `cats-effect` in JVM implementation.
 
 *June 11 - June 29*
@@ -98,7 +98,7 @@ Mentors informed me that, migrating all appropriate modules in `fs2` into `Polli
 
 Generally I am available around 25-30 hours weekly during the coding period.
 
-Currently I am in my 4th semester of my Masters. Normally I would start thesis around June, but if my proposal is accepted I will delay my thesis process so that I start working on it after GSOC. Therefore my thesis won't cause any availibility issues for GSOC.
+Currently I am in my 4th semester of my Masters. Normally I would start thesis around June, but if my proposal is accepted I will delay my thesis process so that I start working on it after GSOC. Therefore my thesis won't cause any availability issues for GSOC.
 
 I will probably have one final exam during the coding period. To prevent any surprises I extend the standard coding period by one week in my proposal.
 
@@ -123,6 +123,6 @@ I have a part time job which takes around ~10-15 hours weekly. At the time codin
 
 == My Background
 
-I have a keen interest in systems programming and functional programming which I demonstrate with my #link("https://github.com/onsah/Flux_rs")[toy programming language implementatation]. I have a work background where I used Scala Futures professionally so concepts like blocking/nonblocking I/O, event loops and thread pools are familiar to me. My professional Scala experience is around 2 years so I am fairly comfortable with the language. Though I don't have much experience on Cats before I got into the community, I am working on it by following starter guides and I will continue to familiarize myself.
+I have a keen interest in systems programming and functional programming which I demonstrate with my #link("https://github.com/onsah/Flux_rs")[toy programming language implementation]. I have a work background where I used Scala Futures professionally so concepts like blocking/nonblocking I/O, event loops and thread pools are familiar to me. My professional Scala experience is around 2 years so I am fairly comfortable with the language. Though I don't have much experience on Cats before I got into the community, I am working on it by following starter guides and I will continue to familiarize myself.
 
 Before submitting this proposal, I introduced myself to Typelevel project to make early contributions and show my interest in the project. Thankfully, Arman Bilge had was very attentive and helpful. With his guidance, I worked on implementing non-blocking process API in `fs2`. I have successfully landed changes into `fs2` with https://github.com/typelevel/fs2/pull/3539 and https://github.com/typelevel/fs2/pull/3548.

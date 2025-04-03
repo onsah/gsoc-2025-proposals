@@ -1,4 +1,17 @@
 {
     "editor.inlineSuggest.enabled": false,
-    "tinymist.exportPdf": "onSave"
+    "tinymist.exportPdf": "onSave",
+    "cSpell.words": [
+        "Arman",
+        "Datagram",
+        "effectful",
+        "epoll",
+        "GSOC",
+        "kqueue",
+        "nonblocking",
+        "Onur",
+        "Şahin",
+        "Straße",
+        "Typelevel"
+    ]
 }
