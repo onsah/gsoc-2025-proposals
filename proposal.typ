@@ -10,7 +10,7 @@ Github: https://github.com/onsah/
 
 #link("https://fs2.io")[Fs2] is a "Functional, effectful, concurrent" streaming I/O library. It allows building and transforming arbitrarily complex streams possibly with side effects. With fs2, you can build streams with functional style while keeping constant memory usage and linear time complexity.
 
-Currently, fs2 makes use of `NIO` in it's JVM implementation for the networking API. `NIO` incurs an indirection which causes non-trivial performance penalty. The project aims to implement it's I/O functionality using direct OS APIs such as `epoll`/`kqueue` for the JVM implementation. The Scala Native fs2 implementation already uses `epoll`/`kqueue`.
+Currently, fs2 makes use of `NIO` in it's JVM implementation for the networking API. `NIO` uses a lot of synchronization (locking) and causes indirection which result with non-trivial performance penalty. The project aims to implement it's I/O functionality using direct OS APIs such as `epoll`/`kqueue` for the JVM implementation. The goal is to reduce locking and indirection to increase the performance. The Scala Native fs2 implementation already uses `epoll`/`kqueue`.
 
 == How it will improve fs2?
 
@@ -27,14 +27,15 @@ A part of the larger project, a `PollingSystem` is already implemented in `cats-
 == Mentors
 
 - Arman Bilge (#link("https://www.armanbilge.com/")[Website])
+- Antonio Jimenez (#link("https://github.com/antoniojimeneznieto")[Github])
 
 == Deliverables
 
-1. Implement `epoll` based `PollingSystem` in `cats-effect`.
-2. Implement networking in `fs2` using `PollingSystem` API.
-3. Implement `kqueue` based `PollingSystem` in `cats-effect`.
+1. `epoll` based `PollingSystem` in `cats-effect`.
+3. `kqueue` based `PollingSystem` in `cats-effect`.
+2. `fs2` migration to `PollingSystem`.
 4. Performance benchmarking against the previous `PollingSystem`.
-5. Documentation.
+5. Documentation: Both internal and external.
 
 == Proposal Timeline
 
@@ -44,43 +45,49 @@ This project has three main parts:
 - `kqueue` polling system in `cats-effect`
 - Using `epoll`/`kqueue` polling sytems in `fs2` for networking.
 
-I believe having one vertical slice of the implementation will help getting faster feedback and improve the overall development process. Therefore I will first implement `epoll` polling system and use it in `fs2` for networking. Then once it works properly, I will work on implementing `kqueue` polling system.
+I believe having one vertical slice of the implementation will help getting faster feedback and improve the overall development process. Therefore I will first implement `epoll` polling system and use it in some parts of `fs2`. Then once it works properly, I will work on implementing `kqueue` polling system. Then I will work on remaining places to migrate in `fs2`.
+
+Mentors informed me that, migrating all appropriate modules in `fs2` into `PollingSystem` might not be realistic for the project duration. Therefore, I added some modules into the timeline as optional.
 
 *May 1 - May 10*:
 
 - Get familiar with `fs2` and `cats-effect`. Knowing how tools are used will help me see retain big picture when delving into the implementation details.
-- Setup codebases locally. I already did this for `fs2` for my prior contributions.
+- Setup codebases locally. I already did this for `fs2` when I previously contributed.
 - Keep close communication with mentors. Regularly ask questions I have regarding project design and details.
 
 *May 10 - June 2*
-- Investigate how networking I/O us implemented in `cats-effect` and how NIO is used in the runtime. Specifically study changes in #link("https://github.com/typelevel/cats-effect/pull/3332")[this PR].
-- Study how `fs2` uses `cats-effect` runtime for I/O.
-- (If there is enough time) Study `epoll` and `kqueue` APIs. Possibly implement prototype programs using them.
+- Investigate how networking I/O us implemented in `cats-effect` and how NIO is used in the runtime (#link("https://github.com/typelevel/cats-effect/pull/3332")[this PR]).
+- Study existing migration to `PollingSystem` in `fs2` (#link("https://github.com/typelevel/fs2/pull/3240")[this PR]).
+- Study `epoll` and `kqueue` APIs. Possibly implement prototype programs using them.
 - Study how to call system APIs from Scala. This will be necessary to utilize native I/O APIs from within `cats-effect`. Decide what technology to use. One possibility is to use #link("https://github.com/jnr/jnr-ffi")[JNR].
 
-*June 2 - June 30* (Official coding period starts)
+*June 2 - June 10* (Official coding period starts)
 
 - Create a Github project under the Typlevel organization. Each milestone will be opened as an issue and will be linked to this project.
 - Setup infrastructure to call native code from `cats-effect` in JVM implementation.
-- Study `PollingSystem` API and existing JVM and Scala Native implementation.
+
+*June 11 - June 29*
 - Implement `epoll` polling system in `cats-effect` for JVM.
 - Perform automated and manual tests. Write additional automated tests if necessary.
 
-*July 1 - July 16*
-- Integrate `PollingSystem` for networking in `fs2` for JVM.
-- Perform testing for the changes. Write additional automated tests if necessary.
+*June 30 - July 27*
+- Migrate `SocketGroup` / `Socket` in `fs2` to use `PollingSystem`.
+- Migrate `UnixSockets` in `fs2` to use `PollingSystem`.
+- Ensure proper documentation is in place.
+- Test that `SocketGroup`, `Socket` and `UnixSockets` modules work correctly with `epoll` `PollingSystem`. Write automated tests.
+- (Optional) if there is enough time, also migrate `DatagramSockets` and `Process` modules.
 
-*July 17 - August 06*
+*July 28 - August 10*
 
 - Implement `kqueue` polling system in `cats-effect` for JVM.
-- Test `fs2` with `kqueue` based `PollingSystem`.
+- Test that `SocketGroup`, `Socket` and `UnixSockets` modules work correctly with `kqueue` `PollingSystem`. Write automated tests.
 
-*August 06 - August 15*
+*August 11 - August 17*
 
 - Benchmark `epoll`/`kqueue` polling systems against NIO based polling system.
 - Create a results report out of the benchmark outcomes.
 
-*August 16 - August 30*
+*August 18 - August 30*
 
 - Document new polling systems including internal implementation for their implementation details.
 - Perform final testing to ensure no regressions happened and there are performance gain.
