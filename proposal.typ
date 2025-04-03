@@ -61,12 +61,12 @@ Mentors informed me that, migrating all appropriate modules in `fs2` into `Polli
 - Study `epoll` and `kqueue` APIs. Possibly implement prototype programs using them.
 - Study how to call system APIs from Scala. This will be necessary to utilize native I/O APIs from within `cats-effect`. Decide what technology to use. One possibility is to use #link("https://github.com/jnr/jnr-ffi")[JNR].
 
-*June 2 - June 10* (Official coding period starts)
+*June 2 - June 6* (Official coding period starts)
 
 - Create a Github project under the Typelevel organization. Each milestone will be opened as an issue and will be linked to this project.
 - Setup infrastructure to call native code from `cats-effect` in JVM implementation.
 
-*June 11 - June 29*
+*June 7 - June 29*
 - Implement `epoll` polling system in `cats-effect` for JVM.
 - Perform automated and manual tests. Write additional automated tests if necessary.
 
