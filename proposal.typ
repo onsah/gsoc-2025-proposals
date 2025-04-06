@@ -1,6 +1,6 @@
 #show link: underline
 
-= Native I/O backend for FS2 JVM
+= FS2: Native I/O backend for FS2 JVM
 
 Name: Onur Şahin \
 E-mail: #link("mailto:sahinonur2000@hotmail.com") \
