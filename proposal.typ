@@ -10,7 +10,7 @@ Github: https://github.com/onsah/
 
 == Abstract
 
-#link("https://fs2.io")[Fs2] is a "Functional, effectful, concurrent" streaming I/O library. It allows building and transforming arbitrarily complex streams possibly with side effects. With fs2, you can build streams with functional style while keeping constant memory usage and linear time complexity.
+#link("https://fs2.io")[fs2] is a "Functional, effectful, concurrent" streaming I/O library. It allows building and transforming arbitrarily complex streams possibly with side effects. With fs2, you can build streams with functional style while keeping constant memory usage and linear time complexity.
 
 Currently, fs2 makes use of `NIO` in it's JVM implementation for the networking API. `NIO` uses a lot of synchronization (locking) and causes indirection which result with non-trivial performance penalty. The project aims to implement it's I/O functionality using direct OS APIs such as `epoll`/`kqueue` for the JVM implementation. The goal is to reduce locking and indirection to increase the performance. The Scala Native fs2 implementation already uses `epoll`/`kqueue`.
 
