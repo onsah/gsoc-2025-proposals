@@ -123,6 +123,16 @@ I have a part time job which takes around ~10-15 hours weekly. At the time codin
 
 == My Background
 
-I have a keen interest in systems programming and functional programming which I demonstrate with my #link("https://github.com/onsah/Flux_rs")[toy programming language implementation]. I have a work background where I used Scala Futures professionally so concepts like blocking/nonblocking I/O, event loops and thread pools are familiar to me. My professional Scala experience is around 2 years so I am fairly comfortable with the language. Though I don't have much experience on Cats before I got into the community, I am working on it by following starter guides and I will continue to familiarize myself.
+I am passionate about systems programming and functional programming, with a strong interest in building scalable and efficient systems. As a demonstration of this, I developed Flux_rs, a toy programming language implementation (with bytecode VM) that deepened my understanding of language design and runtime mechanics.
 
-Before submitting this proposal, I introduced myself to Typelevel project to make early contributions and show my interest in the project. Thankfully, Arman Bilge had was very attentive and helpful. With his guidance, I worked on implementing non-blocking process API in `fs2`. I have successfully landed changes into `fs2` with https://github.com/typelevel/fs2/pull/3539 and https://github.com/typelevel/fs2/pull/3548.
+Open source has a very special for me since I started programming, and I actively contribute to projects that align with my interests in systems programming and developer tools. Some highlights include: 
+
+- Maintained a #link("https://github.com/onsah/fullscreen-to-new-workspace")[Gnome Shell Extension] with 16 stars
+- #link("https://github.com/nushell/nushell/pull/4242")[Contributed to Nu Shell’s standard library], enhancing usability for a growing community.
+- Making #link("https://github.com/SerenityOS/jakt/pulls?q=is%3Apr+author%3Aonsah")[multiple contributions to Jakt typechecker].
+
+Professionally, I have 2 years of experience using Scala, including working with Scala Futures, thread pools, and non-blocking I/O in production environments. This hands-on experience has given me a solid grasp of concurrency models and performance considerations in real-world systems.
+
+While I’m still deepening my familiarity with Cats, I’ve been actively learning the ecosystem through starter guides and practical contributions. To demonstrate my commitment to the Typelevel ecosystem, I engaged early by contributing to fs2. Under the mentorship of Arman Bilge, I successfully implemented a non-blocking process API, with my changes merged in https://github.com/typelevel/fs2/pull/3539 and https://github.com/typelevel/fs2/pull/3548.. This experience not only strengthened my understanding of functional effect systems but also showcased my ability to deliver meaningful contributions to open-source projects.
+
+I’m excited to continue contributing to Typelevel and further grow my expertise in functional programming through GSoC.
