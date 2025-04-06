@@ -1,3 +1,5 @@
+#show link: underline
+
 = Native I/O backend for FS2 JVM
 
 Name: Onur Şahin \
