@@ -6,7 +6,8 @@ Name: Onur Şahin \
 E-mail: #link("mailto:sahinonur2000@hotmail.com") \
 Address: Richard Wagner Straße 66, 79104 Freiburg, Germany \
 Website: https://blog.aiono.dev/ \
-Github: https://github.com/onsah/
+Github: https://github.com/onsah/ \
+Affiliation: MSc. student at University of Freiburg
 
 == Abstract
 
